@@ -12,6 +12,8 @@ const __dirname = path.resolve();
 
 const PORT = process.env.PORT || 3000;
 
+// middlewares
+app.use(express.json());
 
 // routes
 app.use("/api/auth", authRoutes);
