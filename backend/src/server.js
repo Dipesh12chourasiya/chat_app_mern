@@ -5,6 +5,7 @@ import cors from "cors";
 import { connectDB } from "./lib/db.js";
 import { ENV } from "./lib/env.js";
 import cookieParser from "cookie-parser";
+import { arcjetProtection } from "./middleware/arcjet.middleware.js";
 
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
@@ -23,7 +24,7 @@ app.use(cors({ origin: ENV.CLIENT_URL, credentials: true }));
 app.use(cookieParser());
 
 // routes
-app.get("/api", (req, res)=>{
+app.get("/api", arcjetProtection, (req, res)=>{
   res.send({
     message: "Backend is running."
   })
