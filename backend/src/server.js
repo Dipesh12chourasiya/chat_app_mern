@@ -9,9 +9,9 @@ import { arcjetProtection } from "./middleware/arcjet.middleware.js";
 
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
+import {app , server} from "./lib/socket.js"
 
 
-const app = express()
 const __dirname = path.resolve();
 
 // db connection
@@ -42,4 +42,4 @@ if (ENV.NODE_ENV === "production") {
   });
 }
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}!`))
+server.listen(PORT, () => console.log(`Server running on port ${PORT}!`))
